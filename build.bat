@@ -72,9 +72,9 @@ goto EOF
 if %BUILDDOC% == ON (
     if exist %DOCSDIR% rmdir /q /s %DOCSDIR%
     mkdir %DOCSDIR%
-    xcopy %RESDIR% %DOCSDIR% /q /s > nul
+    @rem xcopy %RESDIR% %DOCSDIR% /q /s > nul
     doxygen.exe Doxyfile
-    xcopy %RESDIR%\%DOXYCSS% %DOCSDIR%\%DOXYCSS% /q /s /y > nul
+    @rem xcopy %RESDIR%\%DOXYCSS% %DOCSDIR%\%DOXYCSS% /q /s /y > nul
     goto EOF
 )
 
