@@ -41,7 +41,7 @@ SET(spatialitecpp_dir_inc "${spatialitecpp_dir}/include")
 # Set shared_ptr directory
 SET(sharedptr_dir_inc $ENV{sharedptr_dir_inc})
 IF (NOT sharedptr_dir_inc)
-    SET(sharedptr_dir_inc "${spatialitecpp_dir}/ext/shared_ptr/src")
+    SET(sharedptr_dir_inc "${spatialitecpp_dir}/ext/shared_ptr/include")
 ENDIF()
 
 # Set SpatiaLite directory and libraries
