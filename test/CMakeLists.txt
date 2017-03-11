@@ -13,7 +13,7 @@ INCLUDE(ExternalProject)
 # ----------------------------------------------------------------------
 ExternalProject_Add(
     gtest
-    URL https://googletest.googlecode.com/files/gtest-1.7.0.zip
+    URL https://github.com/google/googletest/archive/release-1.8.0.zip
     PREFIX ${CMAKE_CURRENT_BINARY_DIR}/gtest
     # Disable install step
     INSTALL_COMMAND ""
@@ -32,42 +32,29 @@ ADD_DEPENDENCIES(libgtest gtest)
 ExternalProject_Get_Property(gtest source_dir binary_dir)
 IF(WIN32)
     SET_TARGET_PROPERTIES(libgtest PROPERTIES
-        "IMPORTED_LOCATION_DEBUG" "${binary_dir}/Debug/gtest.lib"
-        "IMPORTED_LOCATION_RELEASE" "${binary_dir}/Release/gtest.lib"
+        "IMPORTED_LOCATION_DEBUG" "${binary_dir}/googlemock/gtest/Debug/gtest.lib"
+        "IMPORTED_LOCATION_RELEASE" "${binary_dir}/googlemock/gtest/Release/gtest.lib"
         "IMPORTED_LINK_INTERFACE_LIBRARIES" "${CMAKE_THREAD_LIBS_INIT}")
 ELSE()
     SET_TARGET_PROPERTIES(libgtest PROPERTIES
         "IMPORTED_LOCATION" "${binary_dir}/libgtest.a"
         "IMPORTED_LINK_INTERFACE_LIBRARIES" "${CMAKE_THREAD_LIBS_INIT}")
 ENDIF()
-INCLUDE_DIRECTORIES("${source_dir}/include")
-
-# ======================================================================
-# Download and install GoogleMock
-# ----------------------------------------------------------------------
-ExternalProject_Add(
-    gmock
-    URL https://googlemock.googlecode.com/files/gmock-1.7.0.zip
-    PREFIX ${CMAKE_CURRENT_BINARY_DIR}/gmock
-    # Disable install step
-    INSTALL_COMMAND ""
-)
+INCLUDE_DIRECTORIES("${source_dir}/googletest/include")
 
 # ======================================================================
 # Create a libgmock target to be used as a dependency by test programs
 # ----------------------------------------------------------------------
 ADD_LIBRARY(libgmock IMPORTED STATIC GLOBAL)
-ADD_DEPENDENCIES(libgmock gmock)
 
 # ======================================================================
 # Set gmock properties
 # ----------------------------------------------------------------------
 
-ExternalProject_Get_Property(gmock source_dir binary_dir)
 IF(WIN32)
     SET_TARGET_PROPERTIES(libgmock PROPERTIES
-        "IMPORTED_LOCATION_DEBUG" "${binary_dir}/Debug/gmock.lib"
-        "IMPORTED_LOCATION_RELEASE" "${binary_dir}/Release/gmock.lib"
+        "IMPORTED_LOCATION_DEBUG" "${binary_dir}/googlemock/Debug/gmock.lib"
+        "IMPORTED_LOCATION_RELEASE" "${binary_dir}/googlemock/Release/gmock.lib"
         "IMPORTED_LINK_INTERFACE_LIBRARIES" "${CMAKE_THREAD_LIBS_INIT}")
 ELSE()
     SET_TARGET_PROPERTIES(libgmock PROPERTIES
