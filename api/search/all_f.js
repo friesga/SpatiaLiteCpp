@@ -1,13 +1,14 @@
 var searchData=
 [
+  ['spatialitec_2b_2b',['SpatiaLiteC++',['../index.html',1,'']]],
   ['sample1',['sample1',['../samples_8cpp.html#a2d10f5373103a91ceb956fafe7c5bf03',1,'samples.cpp']]],
   ['sample2',['sample2',['../samples_8cpp.html#a45c5c2171acaa80f0bbf2f6075344f97',1,'samples.cpp']]],
   ['samples',['samples',['../main_8cpp.html#a296d0d8ff81677d81815bd49551fdaad',1,'samples():&#160;samples.cpp'],['../samples_8cpp.html#a296d0d8ff81677d81815bd49551fdaad',1,'samples():&#160;samples.cpp']]],
   ['samples_2ecpp',['samples.cpp',['../samples_8cpp.html',1,'']]],
   ['sanitizegeometries',['sanitizeGeometries',['../class_spatia_lite_1_1_spatial_database.html#ab7541e00531878fc5a224eff816453b6',1,'SpatiaLite::SpatialDatabase']]],
   ['sanitizegeometry',['sanitizeGeometry',['../class_spatia_lite_1_1_spatial_database.html#af2dfbed7afa73ad280aa05920c7e490e',1,'SpatiaLite::SpatialDatabase']]],
-  ['setfileid',['setFileId',['../class_spatia_lite_1_1_xml_blob.html#aaa85cd531d5eb72a158a00384547f612',1,'SpatiaLite::XmlBlob']]],
-  ['setparentid',['setParentId',['../class_spatia_lite_1_1_xml_blob.html#a2d51c1dc6460da491128c96a2ee3c823',1,'SpatiaLite::XmlBlob']]],
+  ['setfileid',['setFileId',['../class_spatia_lite_1_1_xml_blob.html#aa14412fa5096e3c0bafa2580b70f17a8',1,'SpatiaLite::XmlBlob']]],
+  ['setparentid',['setParentId',['../class_spatia_lite_1_1_xml_blob.html#a6b499174b34b027cb0427d46b2438fc4',1,'SpatiaLite::XmlBlob']]],
   ['shapefile',['Shapefile',['../class_spatia_lite_1_1_shapefile.html',1,'SpatiaLite']]],
   ['shapefile',['Shapefile',['../class_spatia_lite_1_1_shapefile.html#a2283509ef0175546ff1d3481697a5d4f',1,'SpatiaLite::Shapefile']]],
   ['shapefile_2ecpp',['Shapefile.cpp',['../_shapefile_8cpp.html',1,'']]],
@@ -26,5 +27,5 @@ var searchData=
   ['spatialitecpp_5fversion',['SPATIALITECPP_VERSION',['../_spatia_lite_cpp_8h.html#a5065d50405135be24ad61d4fa8581bbc',1,'SpatiaLiteCpp.h']]],
   ['spatialitecpp_5fversion_5fnumber',['SPATIALITECPP_VERSION_NUMBER',['../_spatia_lite_cpp_8h.html#ae0617d7322df62e4cc0493b15c3711f2',1,'SpatiaLiteCpp.h']]],
   ['spatialitecppabi_2eh',['SpatiaLiteCppAbi.h',['../_spatia_lite_cpp_abi_8h.html',1,'']]],
-  ['store',['store',['../class_spatia_lite_1_1_xml_blob.html#a4d41ab1575c98b33056cef182ac1acad',1,'SpatiaLite::XmlBlob']]]
+  ['store',['store',['../class_spatia_lite_1_1_xml_blob.html#a246cc8d2105be48908bbcb01fca96915',1,'SpatiaLite::XmlBlob']]]
 ];
