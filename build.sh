@@ -72,9 +72,9 @@ if [ "$BUILDDOC" == "ON" ]; then
         rm -rf $DOCSDIR
     fi
     mkdir $DOCSDIR
-    cp -r $RESDIR/* $DOCSDIR/
+    #cp -r $RESDIR/* $DOCSDIR/
     doxygen Doxyfile
-    cp $RESDIR/$DOXYCSS $DOCSDIR/$DOXYCSS
+    #cp $RESDIR/$DOXYCSS $DOCSDIR/$DOXYCSS
     exit 0
 fi
 
