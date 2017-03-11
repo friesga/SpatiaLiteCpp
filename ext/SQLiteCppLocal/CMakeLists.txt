@@ -16,18 +16,21 @@ SET(sqlitecpp_dir "${spatialitecpp_dir}/ext/SQLiteCpp")
 
 SET(sqlitecpp_hdr
     "${sqlitecpp_dir}/include/SQLiteCpp/Assertion.h"
+    "${sqlitecpp_dir}/include/SQLiteCpp/Backup.h"
     "${sqlitecpp_dir}/include/SQLiteCpp/Column.h"
     "${sqlitecpp_dir}/include/SQLiteCpp/Database.h"
     "${sqlitecpp_dir}/include/SQLiteCpp/Exception.h"
     "${sqlitecpp_dir}/include/SQLiteCpp/SQLiteCpp.h"
     "${sqlitecpp_dir}/include/SQLiteCpp/Statement.h"
-    "${sqlitecpp_dir}/include/SQLiteCpp/Transaction.h")
+    "${sqlitecpp_dir}/include/SQLiteCpp/Transaction.h"
+    "${sqlitecpp_dir}/include/SQLiteCpp/VariadicBind.h")
 
 # ==================================================
 # Set source files
 # --------------------------------------------------
 
 SET(sqlitecpp_src
+    "${sqlitecpp_dir}/src/Backup.cpp"
     "${sqlitecpp_dir}/src/Column.cpp"
     "${sqlitecpp_dir}/src/Database.cpp"
     "${sqlitecpp_dir}/src/Statement.cpp"
