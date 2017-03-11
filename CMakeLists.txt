@@ -14,6 +14,7 @@ ENDIF(NOT DEFINED CMAKE_INSTALL_PREFIX)
 # ----------------------------------------------------------------------
 
 OPTION(SPATIALITECPP_USE_ICONV "Expect iconv use from spatialite" ON)
+OPTION(SPATIALITECPP_USE_LIBXML2 "Expect libxml2 from spatialite" ON)
 OPTION(SPATIALITECPP_BUILD_EXAMPLES "Build examples project" OFF)
 OPTION(SPATIALITECPP_BUILD_DYNAMIC "Build as dynamic library" OFF)
 OPTION(SPATIALITECPP_BUILD_TEST "Build as test project" OFF)
