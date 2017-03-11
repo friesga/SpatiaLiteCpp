@@ -19,7 +19,7 @@ set BUILDTEST=OFF
 set BUILDMODE=Release
 set BUILDDIR=build\windows
 set CMAKEARGS=
-set GENERATOR="Visual Studio 14 2015"
+set GENERATOR="Visual Studio 14 2015 Win64"
 
 @rem Define directories
 set SRCDIR=%~dp0
