@@ -2,9 +2,8 @@
 # ==================================================
 # Set examples directory and files
 # --------------------------------------------------
-
-SET(examples_dir_data "${spatialitecpp_dir}/examples")
-SET(examples_src
+set (examples_dir_data "${spatialitecpp_dir}/examples")
+set (examples_src
     "${CMAKE_CURRENT_SOURCE_DIR}/demos.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/examples.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/main.cpp"
@@ -15,11 +14,11 @@ SET(examples_src
 # --------------------------------------------------
 
 # Link as static library if dynamic option not set
-IF(WIN32 AND ${SPATIALITECPP_BUILD_DYNAMIC})
-    ADD_DEFINITIONS(-DSPATIALITECPP_IMPORT)
-ENDIF()
+if (WIN32 AND ${SPATIALITECPP_BUILD_DYNAMIC})
+    add_definitions (-DSPATIALITECPP_IMPORT)
+endif ()
 
-ADD_EXECUTABLE(examples ${examples_src})
+add_executable (examples ${examples_src})
 set (LIBS
     "C:/Tools/spatialite-4.3.0a/lib/spatialite.lib"
     "C:/Tools/sqlite-3.32.3/lib/sqlite3-static.lib"
@@ -31,7 +30,8 @@ set (LIBS
     "C:/Tools/libiconv-1.16/lib/libiconvStatic.lib"
     "C:/Tools/zlib-1.2.11/lib/libz-static.lib"
     WS2_32.lib)
-TARGET_LINK_LIBRARIES(examples
+
+target_link_libraries (examples
     ${LIBS}
     SQLiteCpp
     SpatiaLiteCpp)
@@ -39,39 +39,37 @@ TARGET_LINK_LIBRARIES(examples
 # ==================================================
 # Set include directories
 # --------------------------------------------------
-
-SET(examples_inc
+set (examples_inc
     ${sharedptr_dir_inc}
     ${spatialitecpp_dir_inc}
     ${sqlitecpp_dir_inc}
     ${spatialite_dir_inc}
     ${sqlite_dir_inc})
-INCLUDE_DIRECTORIES(${examples_inc})
+include_directories (${examples_inc})
 
 # ==================================================
 # Add executable to install project
 # --------------------------------------------------
+set (install_dir_ex "${install_dir}/examples")
 
-SET(install_dir_ex "${install_dir}/examples")
+install (TARGETS examples RUNTIME DESTINATION ${install_dir_ex}/)
+install (DIRECTORY "${examples_dir_data}/spatialite" DESTINATION ${install_dir_ex})
+install (DIRECTORY "${examples_dir_data}/states" DESTINATION ${install_dir_ex})
+install (DIRECTORY "${examples_dir_data}/wfs" DESTINATION ${install_dir_ex})
+install (DIRECTORY "${examples_dir_data}/xml" DESTINATION ${install_dir_ex})
 
-INSTALL(TARGETS examples RUNTIME DESTINATION ${install_dir_ex}/)
-INSTALL(DIRECTORY "${examples_dir_data}/spatialite" DESTINATION ${install_dir_ex})
-INSTALL(DIRECTORY "${examples_dir_data}/states" DESTINATION ${install_dir_ex})
-INSTALL(DIRECTORY "${examples_dir_data}/wfs" DESTINATION ${install_dir_ex})
-INSTALL(DIRECTORY "${examples_dir_data}/xml" DESTINATION ${install_dir_ex})
-IF(${SPATIALITECPP_BUILD_DYNAMIC})
-    INSTALL(DIRECTORY "${install_dir}/lib/"
+if (${SPATIALITECPP_BUILD_DYNAMIC})
+    install (DIRECTORY "${install_dir}/lib/"
             DESTINATION ${install_dir_ex}
             FILES_MATCHING PATTERN "*${CMAKE_SHARED_LIBRARY_SUFFIX}")
-ENDIF()
+endif ()
 
 # ==================================================
 # Copy example files
 # --------------------------------------------------
+set (examples_build_dir "${CMAKE_BINARY_DIR}/examples")
 
-SET(examples_build_dir "${CMAKE_BINARY_DIR}/examples")
-
-FILE(COPY "${examples_dir_data}/spatialite" DESTINATION ${examples_build_dir})
-FILE(COPY "${examples_dir_data}/states" DESTINATION ${examples_build_dir})
-FILE(COPY "${examples_dir_data}/wfs" DESTINATION ${examples_build_dir})
-FILE(COPY "${examples_dir_data}/xml" DESTINATION ${examples_build_dir})
+file (COPY "${examples_dir_data}/spatialite" DESTINATION ${examples_build_dir})
+file (COPY "${examples_dir_data}/states" DESTINATION ${examples_build_dir})
+file (COPY "${examples_dir_data}/wfs" DESTINATION ${examples_build_dir})
+file (COPY "${examples_dir_data}/xml" DESTINATION ${examples_build_dir})
