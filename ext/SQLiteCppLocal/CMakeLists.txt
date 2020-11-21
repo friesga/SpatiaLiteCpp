@@ -7,14 +7,12 @@
 # ==================================================
 # Set external directories
 # --------------------------------------------------
-
-SET(sqlitecpp_dir "${spatialitecpp_dir}/ext/SQLiteCpp")
+set (sqlitecpp_dir "${spatialitecpp_dir}/ext/SQLiteCpp")
 
 # ==================================================
 # Set header files
 # --------------------------------------------------
-
-SET(sqlitecpp_hdr
+set (sqlitecpp_hdr
     "${sqlitecpp_dir}/include/SQLiteCpp/Assertion.h"
     "${sqlitecpp_dir}/include/SQLiteCpp/Backup.h"
     "${sqlitecpp_dir}/include/SQLiteCpp/Column.h"
@@ -28,8 +26,7 @@ SET(sqlitecpp_hdr
 # ==================================================
 # Set source files
 # --------------------------------------------------
-
-SET(sqlitecpp_src
+set (sqlitecpp_src
     "${sqlitecpp_dir}/src/Backup.cpp"
     "${sqlitecpp_dir}/src/Column.cpp"
     "${sqlitecpp_dir}/src/Database.cpp"
@@ -39,21 +36,23 @@ SET(sqlitecpp_src
 # ==================================================
 # Set include directories
 # --------------------------------------------------
-
-SET(sqlitecpp_inc
+set (sqlitecpp_inc
     "${sqlitecpp_dir}/include"
     "${sqlitecpp_dir}/sqlite3")
-INCLUDE_DIRECTORIES(${sqlitecpp_inc})
+
+include_directories (${sqlitecpp_inc})
 
 # ==================================================
 # Add executable and link dependencies
 # --------------------------------------------------
-
-IF(UNIX)
+if (UNIX)
     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
-ENDIF()
-ADD_LIBRARY(SQLiteCpp STATIC ${sqlitecpp_src} ${sqlitecpp_hdr})
-SET_TARGET_PROPERTIES(SQLiteCpp PROPERTIES LINKER_LANGUAGE CXX)
-IF(UNIX)
-    TARGET_LINK_LIBRARIES(SQLiteCpp ${sqlite3_lib})
-ENDIF()
+endif ()
+
+add_library (SQLiteCpp STATIC ${sqlitecpp_src} ${sqlitecpp_hdr})
+
+set_target_properties (SQLiteCpp PROPERTIES LINKER_LANGUAGE CXX)
+
+if (UNIX)
+    target_link_libraries (SQLiteCpp ${sqlite3_lib})
+endif ()
