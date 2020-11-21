@@ -80,7 +80,6 @@ IF (NOT sqlitelite_dir_lib)
     ENDIF()
 ENDIF()
 
-
 IF (NOT spatialite_lib AND NOT sqlite3_lib)
     IF(WIN32)
         SET(spatialite_lib "${spatialite_dir_lib}/spatialite.lib")
@@ -120,6 +119,16 @@ IF (${SPATIALITECPP_BUILD_TEST})
     ENDIF()
     ADD_SUBDIRECTORY(${spatialitecpp_dir}/test)
 ENDIF()
+
+# ======================================================================
+# Set output directories. Put the libraries and binaries that get built
+# into directories at the top of the build tree.
+#
+# *** Don't move these commands below the add_* commands! ***
+# ----------------------------------------------------------------------
+set (CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
+set (CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib)
+set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
 
 # ======================================================================
 # Define project sub-directories
