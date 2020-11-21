@@ -19,6 +19,8 @@ if (WIN32 AND ${SPATIALITECPP_BUILD_DYNAMIC})
 endif ()
 
 add_executable (examples ${examples_src})
+set_property (TARGET examples PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded")
+
 set (LIBS
     "C:/Tools/spatialite-4.3.0a/lib/spatialite.lib"
     "C:/Tools/sqlite-3.32.3/lib/sqlite3-static.lib"

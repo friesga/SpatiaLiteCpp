@@ -1,8 +1,16 @@
-cmake_minimum_required (VERSION 2.8)
+# ======================================================================
+# Set minumum CMake version to be used
+#
+# Note: As a side effect this statement updates the policies in effect!
+# ----------------------------------------------------------------------
+cmake_minimum_required (VERSION 3.15)
+
+# Enable use of MSVC_RUNTIME_LIBRARY
+cmake_policy(SET CMP0091 NEW)
 
 # ======================================================================
 # Set the install prefix to build directory
-# --------------------------------------------------
+# ----------------------------------------------------------------------
 if (NOT DEFINED CMAKE_INSTALL_PREFIX)
     set (CMAKE_INSTALL_PREFIX
         "${CMAKE_BINARY_DIR}" CACHE INTERNAL

@@ -121,6 +121,7 @@ else ()
                                      ${spatialitecpp_hdr}
                                      ${spatialitecpp_doc}
                                      ${spatialitecpp_script})
+    set_property (TARGET SpatiaLiteCpp PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded")
 ENDIF()
 set_target_properties (SpatiaLiteCpp PROPERTIES LINKER_LANGUAGE CXX)
 
