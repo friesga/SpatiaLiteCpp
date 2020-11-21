@@ -50,13 +50,24 @@ if (UNIX)
 endif ()
 
 # Build static library version
-add_library (${SQLITE_STATIC_LIB} STATIC ${sqlitecpp_src} ${sqlitecpp_hdr})
+add_library (${SQLITE_STATIC_LIB} STATIC)
 set_property (TARGET ${SQLITE_STATIC_LIB} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded")
 
+# Build dynamic library version
+#add_library (${SQLITE_SHARED_LIB} SHARED)
+#set_property (TARGET ${SQLITE_SHARED_LIB} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreadedDLL")
+
+# Set sources for the targets
+#set_property (TARGET ${SQLITE_STATIC_LIB} ${SQLITE_SHARED_LIB}
+set_property (TARGET ${SQLITE_STATIC_LIB}
+    PROPERTY SOURCES ${sqlitecpp_src} ${sqlitecpp_hdr})
+
 target_compile_options(${SQLITE_STATIC_LIB} PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/nologo>)
+#target_compile_options(${SQLITE_SHARED_LIB} PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/nologo>)
 
 set_target_properties (${SQLITE_STATIC_LIB} PROPERTIES LINKER_LANGUAGE CXX)
+#set_target_properties (${SQLITE_SHARED_LIB} PROPERTIES LINKER_LANGUAGE CXX)
 
 if (UNIX)
-    target_link_libraries (${SQLITE_STATIC_LIB} ${sqlite3_lib})
+    target_link_libraries (${SQLITE_STATIC_LIB} ${sqlite3_static_lib})
 endif ()

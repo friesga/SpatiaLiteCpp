@@ -115,7 +115,7 @@ if (${SPATIALITECPP_BUILD_DYNAMIC})
     target_link_libraries (SpatiaLiteCpp
         SQLiteCpp
         ${spatialite_lib}
-        ${sqlite3_lib})
+        ${sqlite3_static_lib})
 else ()
     add_library (SpatiaLiteCpp STATIC ${spatialitecpp_src}
                                      ${spatialitecpp_hdr}

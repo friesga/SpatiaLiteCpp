@@ -35,7 +35,7 @@ TARGET_LINK_LIBRARIES(SpatiaLiteCppTest
     libgmock
     ${spatialite_lib}
     SpatiaLiteCpp
-    ${sqlite3_lib}
+    ${sqlite3_static_lib}
     SQLiteCpp
 )
 
