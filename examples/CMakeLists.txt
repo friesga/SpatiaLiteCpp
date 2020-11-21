@@ -35,7 +35,7 @@ set (LIBS
 
 target_link_libraries (examples
     ${LIBS}
-    SQLiteCpp
+    ${SQLITE_STATIC_LIB}
     SpatiaLiteCpp)
 
 # ==================================================

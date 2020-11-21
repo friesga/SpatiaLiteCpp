@@ -38,6 +38,11 @@ set (spatialitecpp_dir "${PROJECT_SOURCE_DIR}")
 set (spatialitecpp_dir_inc "${spatialitecpp_dir}/include")
 
 # ======================================================================
+# Define (naming of) library versions
+# ----------------------------------------------------------------------
+set (SQLITE_STATIC_LIB SQLiteCpp-static)
+
+# ======================================================================
 # Find external libraries. Directories can be set by developer via
 # command line arguments or environment variables. Default is the
 # libraries are in 'ext', a submodule directory.
