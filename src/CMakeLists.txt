@@ -103,7 +103,8 @@ SET(spatialitecpp_inc
     ${sharedptr_dir_inc}
     ${spatialitecpp_dir_inc}
     ${spatialite_dir_inc}
-    ${sqlitecpp_dir_inc})
+    ${sqlitecpp_dir_inc}
+    ${sqlite_dir_inc})
 INCLUDE_DIRECTORIES(${spatialitecpp_inc})
 
 # ==================================================
