@@ -21,6 +21,8 @@ endif ()
 add_executable (examples ${examples_src})
 set_property (TARGET examples PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded")
 
+target_compile_options(examples PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/nologo>)
+
 set (LIBS
     "C:/Tools/spatialite-4.3.0a/lib/spatialite.lib"
     "C:/Tools/sqlite-3.32.3/lib/sqlite3-static.lib"

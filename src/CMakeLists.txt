@@ -124,6 +124,7 @@ else ()
     set_property (TARGET SpatiaLiteCpp PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded")
 ENDIF()
 set_target_properties (SpatiaLiteCpp PROPERTIES LINKER_LANGUAGE CXX)
+target_compile_options(SpatiaLiteCpp PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/nologo>)
 
 # ==================================================
 # Install library and header files

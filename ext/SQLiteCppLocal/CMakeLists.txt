@@ -53,6 +53,8 @@ endif ()
 add_library (${SQLITE_STATIC_LIB} STATIC ${sqlitecpp_src} ${sqlitecpp_hdr})
 set_property (TARGET ${SQLITE_STATIC_LIB} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded")
 
+target_compile_options(${SQLITE_STATIC_LIB} PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/nologo>)
+
 set_target_properties (${SQLITE_STATIC_LIB} PROPERTIES LINKER_LANGUAGE CXX)
 
 if (UNIX)
