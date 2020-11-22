@@ -69,15 +69,10 @@ set_property (TARGET ${SQLITE_SHARED_DEBUG_LIB} PROPERTY MSVC_RUNTIME_LIBRARY "M
 set_property (TARGET ${SQLITE_STATIC_LIB} ${SQLITE_STATIC_DEBUG_LIB} ${SQLITE_SHARED_LIB} ${SQLITE_SHARED_DEBUG_LIB}
     PROPERTY SOURCES ${sqlitecpp_src} ${sqlitecpp_hdr})
 
-target_compile_options(${SQLITE_STATIC_LIB} PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/nologo>)
-target_compile_options(${SQLITE_STATIC_DEBUG_LIB} PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/nologo>)
-target_compile_options(${SQLITE_SHARED_LIB} PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/nologo>)
-target_compile_options(${SQLITE_SHARED_DEBUG_LIB} PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/nologo>)
-
-set_target_properties (${SQLITE_STATIC_LIB} PROPERTIES LINKER_LANGUAGE CXX)
-set_target_properties (${SQLITE_STATIC_DEBUG_LIB} PROPERTIES LINKER_LANGUAGE CXX)
-set_target_properties (${SQLITE_SHARED_LIB} PROPERTIES LINKER_LANGUAGE CXX)
-set_target_properties (${SQLITE_SHARED_DEBUG_LIB} PROPERTIES LINKER_LANGUAGE CXX)
+foreach (target ${SQLITE_TARGETS})
+    target_compile_options(${target} PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/nologo>)
+    set_target_properties (${target} PROPERTIES LINKER_LANGUAGE CXX)
+endforeach ()
 
 # Define libraries to link against
 target_link_libraries (${SQLITE_SHARED_LIB} ${sqlite3_shared_lib})
