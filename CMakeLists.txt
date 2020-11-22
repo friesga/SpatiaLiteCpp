@@ -43,6 +43,7 @@ set (spatialitecpp_dir_inc "${spatialitecpp_dir}/include")
 set (SQLITE_STATIC_LIB SQLiteCpp-static)
 set (SQLITE_STATIC_DEBUG_LIB SQLiteCpp-static-debug)
 set (SQLITE_SHARED_LIB SQLiteCpp)
+set (SQLITE_SHARED_DEBUG_LIB SQLiteCpp-debug)
 
 # ======================================================================
 # Find external libraries. Directories can be set by developer via
@@ -100,6 +101,7 @@ if (NOT spatialite_lib AND NOT sqlite3_lib)
         set (sqlite3_static_lib "${sqlite_dir_lib}/sqlite3-static.lib")
         set (sqlite3_static_debug_lib "${sqlite_dir_lib}/sqlite3-static-debug.lib")
         set (sqlite3_shared_lib "${sqlite_dir_lib}/sqlite3.lib")
+        set (sqlite3_shared_debug_lib "${sqlite_dir_lib}/sqlite3-debug.lib")
     else ()
         set (spatialite_lib "${spatialite_dir_lib}/libspatialite.so")
         set (sqlite3_static_lib "${sqlite_dir_lib}/libsqlite3.so")

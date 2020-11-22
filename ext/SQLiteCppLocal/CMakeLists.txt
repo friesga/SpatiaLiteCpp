@@ -61,20 +61,27 @@ set_property (TARGET ${SQLITE_STATIC_DEBUG_LIB} PROPERTY MSVC_RUNTIME_LIBRARY "M
 add_library (${SQLITE_SHARED_LIB} SHARED)
 set_property (TARGET ${SQLITE_SHARED_LIB} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreadedDLL")
 
+# Build dynamic debug library version
+add_library (${SQLITE_SHARED_DEBUG_LIB} SHARED)
+set_property (TARGET ${SQLITE_SHARED_DEBUG_LIB} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreadedDebugDLL")
+
 # Set sources for the targets
-set_property (TARGET ${SQLITE_STATIC_LIB} ${SQLITE_STATIC_DEBUG_LIB} ${SQLITE_SHARED_LIB}
+set_property (TARGET ${SQLITE_STATIC_LIB} ${SQLITE_STATIC_DEBUG_LIB} ${SQLITE_SHARED_LIB} ${SQLITE_SHARED_DEBUG_LIB}
     PROPERTY SOURCES ${sqlitecpp_src} ${sqlitecpp_hdr})
 
 target_compile_options(${SQLITE_STATIC_LIB} PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/nologo>)
 target_compile_options(${SQLITE_STATIC_DEBUG_LIB} PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/nologo>)
 target_compile_options(${SQLITE_SHARED_LIB} PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/nologo>)
+target_compile_options(${SQLITE_SHARED_DEBUG_LIB} PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/nologo>)
 
 set_target_properties (${SQLITE_STATIC_LIB} PROPERTIES LINKER_LANGUAGE CXX)
 set_target_properties (${SQLITE_STATIC_DEBUG_LIB} PROPERTIES LINKER_LANGUAGE CXX)
 set_target_properties (${SQLITE_SHARED_LIB} PROPERTIES LINKER_LANGUAGE CXX)
+set_target_properties (${SQLITE_SHARED_DEBUG_LIB} PROPERTIES LINKER_LANGUAGE CXX)
 
 # Define libraries to link against
 target_link_libraries (${SQLITE_SHARED_LIB} ${sqlite3_shared_lib})
+target_link_libraries (${SQLITE_SHARED_DEBUG_LIB} ${sqlite3_shared_debug_lib})
 
 if (UNIX)
     target_link_libraries (${SQLITE_STATIC_LIB} ${sqlite3_static_lib})
