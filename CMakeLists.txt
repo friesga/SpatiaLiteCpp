@@ -41,6 +41,7 @@ set (spatialitecpp_dir_inc "${spatialitecpp_dir}/include")
 # Define (naming of) library versions
 # ----------------------------------------------------------------------
 set (SQLITE_STATIC_LIB SQLiteCpp-static)
+set (SQLITE_STATIC_DEBUG_LIB SQLiteCpp-static-debug)
 set (SQLITE_SHARED_LIB SQLiteCpp)
 
 # ======================================================================
@@ -97,6 +98,7 @@ if (NOT spatialite_lib AND NOT sqlite3_lib)
     if (WIN32)
         set (spatialite_lib "${spatialite_dir_lib}/spatialite.lib")
         set (sqlite3_static_lib "${sqlite_dir_lib}/sqlite3-static.lib")
+        set (sqlite3_static_debug_lib "${sqlite_dir_lib}/sqlite3-static-debug.lib")
         set (sqlite3_shared_lib "${sqlite_dir_lib}/sqlite3.lib")
     else ()
         set (spatialite_lib "${spatialite_dir_lib}/libspatialite.so")
