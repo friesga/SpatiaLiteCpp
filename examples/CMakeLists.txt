@@ -38,7 +38,7 @@ set (LIBS
 target_link_libraries (examples
     ${LIBS}
     ${SQLITE_STATIC_LIB}
-    SpatiaLiteCpp)
+    ${SPATIALITE_STATIC_LIB})
 
 # ==================================================
 # Set include directories

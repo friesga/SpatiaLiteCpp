@@ -47,6 +47,8 @@ set (SQLITE_SHARED_DEBUG_LIB SQLiteCpp-debug)
 set (SQLITE_TARGETS ${SQLITE_STATIC_LIB} ${SQLITE_STATIC_DEBUG_LIB}
     ${SQLITE_SHARED_LIB} ${SQLITE_SHARED_DEBUG_LIB})
 
+set (SPATIALITE_STATIC_LIB SpatiaLiteCpp-static)
+
 # ======================================================================
 # Find external libraries. Directories can be set by developer via
 # command line arguments or environment variables. Default is the

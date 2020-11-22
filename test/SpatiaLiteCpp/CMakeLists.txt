@@ -30,11 +30,12 @@ ADD_EXECUTABLE(SpatiaLiteCppTest ${spatialitecpptest_src})
 TARGET_COMPILE_DEFINITIONS(SpatiaLiteCppTest PRIVATE
     SPATIALITECPP_TEST_EX_DIR="${CMAKE_BINARY_DIR}/examples")
 
+ # ToDo: Clean up library references
 TARGET_LINK_LIBRARIES(SpatiaLiteCppTest
     libgtest
     libgmock
     ${spatialite_lib}
-    SpatiaLiteCpp
+    ${SPATIALITE_STATIC_LIB}
     ${sqlite3_static_lib}
     SQLiteCpp
 )
