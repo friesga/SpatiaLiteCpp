@@ -40,7 +40,7 @@ set (spatialitecpp_dir_inc "${spatialitecpp_dir}/include")
 # ======================================================================
 # Define (naming of) library versions
 # ----------------------------------------------------------------------
-set (SPATIALITE_STATIC_LIB SpatiaLiteCpp-static)
+set (SPATIALITECPP_STATIC_LIB SpatiaLiteCpp-static)
 
 # ======================================================================
 # Find external libraries. Directories can be set by developer via

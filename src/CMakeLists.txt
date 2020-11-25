@@ -117,13 +117,13 @@ if (${SPATIALITECPP_BUILD_DYNAMIC})
         ${spatialite_lib}
         ${sqlite3_static_lib})
 else ()
-    add_library (${SPATIALITE_STATIC_LIB} STATIC ${spatialitecpp_src}
+    add_library (${SPATIALITECPP_STATIC_LIB} STATIC ${spatialitecpp_src}
         ${spatialitecpp_hdr} ${spatialitecpp_doc} ${spatialitecpp_script})
-    set_property (TARGET ${SPATIALITE_STATIC_LIB} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded")
+    set_property (TARGET ${SPATIALITECPP_STATIC_LIB} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded")
 ENDIF()
 
-set_target_properties (${SPATIALITE_STATIC_LIB} PROPERTIES LINKER_LANGUAGE CXX)
-target_compile_options(${SPATIALITE_STATIC_LIB} PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/nologo>)
+set_target_properties (${SPATIALITECPP_STATIC_LIB} PROPERTIES LINKER_LANGUAGE CXX)
+target_compile_options(${SPATIALITECPP_STATIC_LIB} PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/nologo>)
 
 # ==================================================
 # Install library and header files
@@ -140,7 +140,7 @@ if (${SPATIALITECPP_BUILD_DYNAMIC})
         LIBRARY DESTINATION ${install_dir_lib}/
         RUNTIME DESTINATION ${install_dir_lib}/)
 else ()
-    install (TARGETS ${SPATIALITE_STATIC_LIB}
+    install (TARGETS ${SPATIALITECPP_STATIC_LIB}
         ARCHIVE DESTINATION ${install_dir_lib}/)
 ENDIF()
 
