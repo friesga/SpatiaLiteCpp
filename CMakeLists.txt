@@ -40,13 +40,6 @@ set (spatialitecpp_dir_inc "${spatialitecpp_dir}/include")
 # ======================================================================
 # Define (naming of) library versions
 # ----------------------------------------------------------------------
-set (SQLITE_STATIC_LIB SQLiteCpp-static)
-set (SQLITE_STATIC_DEBUG_LIB SQLiteCpp-static-debug)
-set (SQLITE_SHARED_LIB SQLiteCpp)
-set (SQLITE_SHARED_DEBUG_LIB SQLiteCpp-debug)
-set (SQLITE_TARGETS ${SQLITE_STATIC_LIB} ${SQLITE_STATIC_DEBUG_LIB}
-    ${SQLITE_SHARED_LIB} ${SQLITE_SHARED_DEBUG_LIB})
-
 set (SPATIALITE_STATIC_LIB SpatiaLiteCpp-static)
 
 # ======================================================================
@@ -115,7 +108,7 @@ endif ()
 # Set SQLiteCpp directory and libraries
 set (sqlitecpp_dir_inc $ENV{sqlitecpp_dir_inc})
 if (NOT sqlitecpp_dir_inc)
-    set (sqlitecpp_dir_inc "${spatialitecpp_dir}/ext/SQLiteCpp/include")
+    set (sqlitecpp_dir_inc "C:/Tools/SQLiteCpp-3.1.1/include")
 endif ()
 
 # ======================================================================
@@ -153,7 +146,6 @@ set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
 # ======================================================================
 # Define project sub-directories
 # ----------------------------------------------------------------------
-add_subdirectory (${spatialitecpp_dir}/ext/SQLiteCppLocal)
 add_subdirectory (${spatialitecpp_dir}/src)
 
 #if (${SPATIALITECPP_BUILD_EXAMPLES})

@@ -11,7 +11,7 @@
 #include "SpatiaLiteCpp/Auxiliary.h"
 #include "SpatiaLiteCpp/SpatialDatabase.h"
 
-#include "SQLiteCpp/SQLiteCpp.h"
+#include "SQLiteCpp.h"
 
 #include <stdexcept>
 

@@ -171,7 +171,7 @@ namespace SpatiaLite
     typedef SPATIALITECPP_PTR(SpatiaLite::XmlDocument) XmlDocumentPtr;
 }
 
-#include "SQLiteCpp/SQLiteCpp.h"
+#include "SQLiteCpp.h"
 
 /**
  * @def SPATIALITECPP_VERSION

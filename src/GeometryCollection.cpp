@@ -12,7 +12,7 @@
 #include "SpatiaLiteCpp/Blob.h"
 #include "SpatiaLiteCpp/SpatialDatabase.h"
 
-#include "SQLiteCpp/SQLiteCpp.h"
+#include "SQLiteCpp.h"
 
 namespace SpatiaLite
 {

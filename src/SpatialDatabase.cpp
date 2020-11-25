@@ -13,7 +13,7 @@ extern "C"
 #include "spatialite.h"
 }
 
-#include "SQLiteCpp/SQLiteCpp.h"
+#include "SQLiteCpp.h"
 
 #include <sstream>
 
