@@ -110,38 +110,36 @@ set (SHARED_LIBS
     "C:/Tools/sqlite-3.32.3/lib/sqlite3.lib")
 
 # Build dynamic library version
-add_library (${SPATIALITECPP_SHARED_LIB} SHARED ${spatialitecpp_src}
-    ${spatialitecpp_hdr} ${spatialitecpp_doc} ${spatialitecpp_script})
+add_library (${SPATIALITECPP_SHARED_LIB} SHARED)
 set_property (TARGET ${SPATIALITECPP_SHARED_LIB} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreadedDLL")
 
 target_compile_definitions (${SPATIALITECPP_SHARED_LIB} PRIVATE SPATIALITECPP_EXPORT)
 target_link_libraries (${SPATIALITECPP_SHARED_LIB} ${SHARED_LIBS})
 
 # Build dynamic debug library version
-add_library (${SPATIALITECPP_SHARED_DEBUG_LIB} SHARED ${spatialitecpp_src}
-    ${spatialitecpp_hdr} ${spatialitecpp_doc} ${spatialitecpp_script})
+add_library (${SPATIALITECPP_SHARED_DEBUG_LIB} SHARED)
 set_property (TARGET ${SPATIALITECPP_SHARED_DEBUG_LIB} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreadedDebugDLL")
 
 target_compile_definitions (${SPATIALITECPP_SHARED_DEBUG_LIB} PRIVATE SPATIALITECPP_EXPORT)
 target_link_libraries (${SPATIALITECPP_SHARED_DEBUG_LIB} ${SHARED_LIBS})
 
 # Build static library version
-add_library (${SPATIALITECPP_STATIC_LIB} STATIC ${spatialitecpp_src}
-    ${spatialitecpp_hdr} ${spatialitecpp_doc} ${spatialitecpp_script})
+add_library (${SPATIALITECPP_STATIC_LIB} STATIC)
 set_property (TARGET ${SPATIALITECPP_STATIC_LIB} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded")
 
 # Build static debug library version
-add_library (${SPATIALITECPP_STATIC_DEBUG_LIB} STATIC ${spatialitecpp_src}
-    ${spatialitecpp_hdr} ${spatialitecpp_doc} ${spatialitecpp_script})
+add_library (${SPATIALITECPP_STATIC_DEBUG_LIB} STATIC)
 set_property (TARGET ${SPATIALITECPP_STATIC_DEBUG_LIB} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreadedDebug")
 
-set_target_properties (${SPATIALITECPP_STATIC_LIB} PROPERTIES LINKER_LANGUAGE CXX)
-set_target_properties (${SPATIALITECPP_STATIC_DEBUG_LIB} PROPERTIES LINKER_LANGUAGE CXX)
-set_target_properties (${SPATIALITECPP_SHARED_LIB} PROPERTIES LINKER_LANGUAGE CXX)
+# Set sources for the targets
+set_property (TARGET ${SPATIALITECPP_STATIC_LIB} ${SPATIALITECPP_STATIC_DEBUG_LIB}
+    ${SPATIALITECPP_SHARED_LIB} ${SPATIALITECPP_SHARED_DEBUG_LIB}
+    PROPERTY SOURCES ${spatialitecpp_src} ${spatialitecpp_hdr})
 
-target_compile_options(${SPATIALITECPP_STATIC_LIB} PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/nologo>)
-target_compile_options(${SPATIALITECPP_STATIC_DEBUG_LIB} PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/nologo>)
-target_compile_options(${SPATIALITECPP_SHARED_LIB} PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/nologo>)
+foreach (target ${ALL_TARGETS})
+    set_target_properties (${target} PROPERTIES LINKER_LANGUAGE CXX)
+    target_compile_options(${target} PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/nologo>)
+endforeach ()
 
 # ==================================================
 # Install library and header files

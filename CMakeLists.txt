@@ -44,6 +44,8 @@ set (SPATIALITECPP_STATIC_LIB SpatiaLiteCpp-static)
 set (SPATIALITECPP_STATIC_DEBUG_LIB SpatiaLiteCpp-static-debug)
 set (SPATIALITECPP_SHARED_LIB SpatiaLiteCpp)
 set (SPATIALITECPP_SHARED_DEBUG_LIB SpatiaLiteCpp-debug)
+set (ALL_TARGETS ${SPATIALITECPP_STATIC_LIB} ${SPATIALITECPP_STATIC_DEBUG_LIB}
+    ${SPATIALITECPP_SHARED_LIB} ${SPATIALITECPP_SHARED_DEBUG_LIB})
 
 # ======================================================================
 # Find external libraries. Directories can be set by developer via
