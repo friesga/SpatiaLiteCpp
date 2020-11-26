@@ -43,6 +43,7 @@ set (spatialitecpp_dir_inc "${spatialitecpp_dir}/include")
 set (SPATIALITECPP_STATIC_LIB SpatiaLiteCpp-static)
 set (SPATIALITECPP_STATIC_DEBUG_LIB SpatiaLiteCpp-static-debug)
 set (SPATIALITECPP_SHARED_LIB SpatiaLiteCpp)
+set (SPATIALITECPP_SHARED_DEBUG_LIB SpatiaLiteCpp-debug)
 
 # ======================================================================
 # Find external libraries. Directories can be set by developer via

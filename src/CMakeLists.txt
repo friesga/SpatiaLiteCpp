@@ -117,6 +117,14 @@ set_property (TARGET ${SPATIALITECPP_SHARED_LIB} PROPERTY MSVC_RUNTIME_LIBRARY "
 target_compile_definitions (${SPATIALITECPP_SHARED_LIB} PRIVATE SPATIALITECPP_EXPORT)
 target_link_libraries (${SPATIALITECPP_SHARED_LIB} ${SHARED_LIBS})
 
+# Build dynamic debug library version
+add_library (${SPATIALITECPP_SHARED_DEBUG_LIB} SHARED ${spatialitecpp_src}
+    ${spatialitecpp_hdr} ${spatialitecpp_doc} ${spatialitecpp_script})
+set_property (TARGET ${SPATIALITECPP_SHARED_DEBUG_LIB} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreadedDebugDLL")
+
+target_compile_definitions (${SPATIALITECPP_SHARED_DEBUG_LIB} PRIVATE SPATIALITECPP_EXPORT)
+target_link_libraries (${SPATIALITECPP_SHARED_DEBUG_LIB} ${SHARED_LIBS})
+
 # Build static library version
 add_library (${SPATIALITECPP_STATIC_LIB} STATIC ${spatialitecpp_src}
     ${spatialitecpp_hdr} ${spatialitecpp_doc} ${spatialitecpp_script})
