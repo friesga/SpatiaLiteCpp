@@ -104,26 +104,36 @@ include_directories (${spatialitecpp_inc})
 # ==================================================
 # Add library and link dependencies
 # --------------------------------------------------
-if (${SPATIALITECPP_BUILD_DYNAMIC})
-    if (WIN32)
-        add_definitions (-DSPATIALITECPP_EXPORT)
-    endif ()
-    add_library (SpatiaLiteCpp SHARED ${spatialitecpp_src}
-                                     ${spatialitecpp_hdr}
-                                     ${spatialitecpp_doc}
-                                     ${spatialitecpp_script})
-    target_link_libraries (SpatiaLiteCpp
-        SQLiteCpp
-        ${spatialite_lib}
-        ${sqlite3_static_lib})
-else ()
-    add_library (${SPATIALITECPP_STATIC_LIB} STATIC ${spatialitecpp_src}
-        ${spatialitecpp_hdr} ${spatialitecpp_doc} ${spatialitecpp_script})
-    set_property (TARGET ${SPATIALITECPP_STATIC_LIB} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded")
-ENDIF()
+set (SHARED_LIBS 
+    "C:/Tools/spatialite-4.3.0a/lib/spatialite.lib"
+    "C:/Tools/SQLiteCpp-3.1.1/lib/SQLiteCpp.lib"
+    "C:/Tools/sqlite-3.32.3/lib/sqlite3.lib")
+
+# Build dynamic library version
+add_library (${SPATIALITECPP_SHARED_LIB} SHARED ${spatialitecpp_src}
+    ${spatialitecpp_hdr} ${spatialitecpp_doc} ${spatialitecpp_script})
+set_property (TARGET ${SPATIALITECPP_SHARED_LIB} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreadedDLL")
+
+target_compile_definitions (${SPATIALITECPP_SHARED_LIB} PRIVATE SPATIALITECPP_EXPORT)
+target_link_libraries (${SPATIALITECPP_SHARED_LIB} ${SHARED_LIBS})
+
+# Build static library version
+add_library (${SPATIALITECPP_STATIC_LIB} STATIC ${spatialitecpp_src}
+    ${spatialitecpp_hdr} ${spatialitecpp_doc} ${spatialitecpp_script})
+set_property (TARGET ${SPATIALITECPP_STATIC_LIB} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded")
+
+# Build static debug library version
+add_library (${SPATIALITECPP_STATIC_DEBUG_LIB} STATIC ${spatialitecpp_src}
+    ${spatialitecpp_hdr} ${spatialitecpp_doc} ${spatialitecpp_script})
+set_property (TARGET ${SPATIALITECPP_STATIC_DEBUG_LIB} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreadedDebug")
 
 set_target_properties (${SPATIALITECPP_STATIC_LIB} PROPERTIES LINKER_LANGUAGE CXX)
+set_target_properties (${SPATIALITECPP_STATIC_DEBUG_LIB} PROPERTIES LINKER_LANGUAGE CXX)
+set_target_properties (${SPATIALITECPP_SHARED_LIB} PROPERTIES LINKER_LANGUAGE CXX)
+
 target_compile_options(${SPATIALITECPP_STATIC_LIB} PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/nologo>)
+target_compile_options(${SPATIALITECPP_STATIC_DEBUG_LIB} PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/nologo>)
+target_compile_options(${SPATIALITECPP_SHARED_LIB} PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/nologo>)
 
 # ==================================================
 # Install library and header files
