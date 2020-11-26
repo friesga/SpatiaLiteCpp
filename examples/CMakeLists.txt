@@ -25,7 +25,7 @@ target_compile_options(examples PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/nologo>)
 
 set (LIBS
     "C:/Tools/SQLiteCpp-3.1.1/lib/SQLiteCpp-static.lib"
-    "C:/Tools/spatialite-4.3.0a/lib/spatialite.lib"
+    "C:/Tools/spatialite-4.3.0a/lib/spatialite-static.lib"
     "C:/Tools/sqlite-3.32.3/lib/sqlite3-static.lib"
     "C:/Tools/geos-3.8.1/lib/geos-static.lib"
     "C:/Tools/geos-3.8.1/lib/geos_c-static.lib"
@@ -36,10 +36,7 @@ set (LIBS
     "C:/Tools/zlib-1.2.11/lib/libz-static.lib"
     WS2_32.lib)
 
-target_link_libraries (examples
-    ${LIBS}
-    ${SQLITE_STATIC_LIB}
-    ${SPATIALITECPP_STATIC_LIB})
+target_link_libraries (examples ${LIBS} ${SPATIALITECPP_STATIC_LIB})
 
 # ==================================================
 # Set include directories

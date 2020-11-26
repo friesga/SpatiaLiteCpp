@@ -94,7 +94,7 @@ endif ()
 
 if (NOT spatialite_lib AND NOT sqlite3_lib)
     if (WIN32)
-        set (spatialite_lib "${spatialite_dir_lib}/spatialite.lib")
+        set (spatialite_lib "${spatialite_dir_lib}/spatialite-static.lib")
         set (sqlite3_static_lib "${sqlite_dir_lib}/sqlite3-static.lib")
         set (sqlite3_static_debug_lib "${sqlite_dir_lib}/sqlite3-static-debug.lib")
         set (sqlite3_shared_lib "${sqlite_dir_lib}/sqlite3.lib")
