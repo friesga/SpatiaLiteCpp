@@ -7,7 +7,7 @@
  */
 #pragma once
 
-#include "SpatiaLiteCpp/SpatiaLiteCppAbi.h"
+#include "SpatiaLiteCppAbi.h"
 
 extern "C"
 {

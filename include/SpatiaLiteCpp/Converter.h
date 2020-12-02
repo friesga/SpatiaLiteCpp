@@ -7,7 +7,7 @@
  */
 #pragma once
 
-#include "SpatiaLiteCpp/Buffer.hpp"
+#include "Buffer.hpp"
 
 #include <string>
 
